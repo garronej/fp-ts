@@ -32,12 +32,12 @@
  *
  * @since 2.0.0
  */
-import { Bounded } from './Bounded'
-import { getMonoid as getFM } from './function'
-import { Endomorphism, getMonoid as getEM } from './Endomorphism'
-import * as _ from './internal'
-import { ReadonlyRecord } from './ReadonlyRecord'
-import * as Se from './Semigroup'
+import { Bounded } from './Bounded.ts'
+import { getMonoid as getFM } from './function.ts'
+import { Endomorphism, getMonoid as getEM } from './Endomorphism.ts'
+import * as _ from './internal.ts'
+import { ReadonlyRecord } from './ReadonlyRecord.ts'
+import * as Se from './Semigroup.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -202,8 +202,6 @@ export const concatAll = <A>(M: Monoid<A>): ((as: ReadonlyArray<A>) => A) => Se.
 // deprecated
 // -------------------------------------------------------------------------------------
 
-// tslint:disable: deprecation
-
 /**
  * Use [`Monoid`](./void.ts.html#monoid) instead.
  *
@@ -234,9 +232,9 @@ export const getTupleMonoid: <T extends ReadonlyArray<Monoid<any>>>(
  * @since 2.0.0
  * @deprecated
  */
-export const getStructMonoid: <O extends ReadonlyRecord<string, any>>(
-  monoids: { [K in keyof O]: Monoid<O[K]> }
-) => Monoid<O> = struct
+export const getStructMonoid: <O extends ReadonlyRecord<string, any>>(monoids: {
+  [K in keyof O]: Monoid<O[K]>
+}) => Monoid<O> = struct
 
 /**
  * Use [`reverse`](#reverse) instead.

@@ -1,11 +1,11 @@
-import * as U from './util'
-import * as Eq from '../src/Eq'
-import { identity, pipe } from '../src/function'
-import * as T from '../src/Task'
-import * as O from '../src/Option'
-import * as S from '../src/string'
-import * as _ from '../src/Tree'
-import * as N from '../src/number'
+import * as U from './util.ts'
+import * as Eq from '../src/Eq.ts'
+import { identity, pipe } from '../src/function.ts'
+import * as T from '../src/Task.ts'
+import * as O from '../src/Option.ts'
+import * as S from '../src/string.ts'
+import * as _ from '../src/Tree.ts'
+import * as N from '../src/number.ts'
 
 describe('Tree', () => {
   describe('pipeables', () => {
@@ -198,9 +198,10 @@ describe('Tree', () => {
       pipe(
         _.of(1),
         _.bindTo('a'),
-        _.bind('b', () => _.of('b'))
+        _.bind('b', () => _.of('b')),
+        _.let('c', ({ a, b }) => [a, b])
       ),
-      _.make({ a: 1, b: 'b' })
+      _.make({ a: 1, b: 'b', c: [1, 'b'] })
     )
   })
 

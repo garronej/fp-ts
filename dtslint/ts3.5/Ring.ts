@@ -1,5 +1,5 @@
-import * as _ from '../../src/Ring'
-import * as N from '../../src/number'
+import * as _ from '../../src/Ring.ts'
+import * as N from '../../src/number.ts'
 
 //
 // tuple

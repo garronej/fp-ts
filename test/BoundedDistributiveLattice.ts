@@ -1,6 +1,6 @@
-import * as U from './util'
-import { getMinMaxBoundedDistributiveLattice } from '../src/BoundedDistributiveLattice'
-import * as N from '../src/number'
+import * as U from './util.ts'
+import { getMinMaxBoundedDistributiveLattice } from '../src/BoundedDistributiveLattice.ts'
+import * as N from '../src/number.ts'
 
 describe('BoundedDistributiveLattice', () => {
   it('getMinMaxBoundedDistributiveLattice', () => {

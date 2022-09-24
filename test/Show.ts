@@ -1,7 +1,7 @@
-import * as U from './util'
-import * as N from '../src/number'
-import * as _ from '../src/Show'
-import * as S from '../src/string'
+import * as U from './util.ts'
+import * as N from '../src/number.ts'
+import * as _ from '../src/Show.ts'
+import * as S from '../src/string.ts'
 
 describe('Show', () => {
   it('struct', () => {
@@ -19,19 +19,16 @@ describe('Show', () => {
   })
 
   it('showBoolean', () => {
-    // tslint:disable-next-line: deprecation
     const Sh = _.showBoolean
     U.deepStrictEqual(Sh.show(true), 'true')
     U.deepStrictEqual(Sh.show(false), 'false')
   })
 
   it('showNumber', () => {
-    // tslint:disable-next-line: deprecation
     U.deepStrictEqual(_.showNumber.show(1), '1')
   })
 
   it('showString', () => {
-    // tslint:disable-next-line: deprecation
     U.deepStrictEqual(_.showString.show('a'), '"a"')
   })
 })

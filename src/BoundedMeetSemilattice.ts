@@ -5,7 +5,7 @@
  *
  * @since 2.0.0
  */
-import { MeetSemilattice } from './MeetSemilattice'
+import { MeetSemilattice } from './MeetSemilattice.ts'
 
 // -------------------------------------------------------------------------------------
 // model

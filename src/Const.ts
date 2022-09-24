@@ -7,22 +7,22 @@
  *
  * @since 2.0.0
  */
-import { Applicative2C } from './Applicative'
-import { Apply2C } from './Apply'
-import { Bifunctor2 } from './Bifunctor'
-import { BooleanAlgebra } from './BooleanAlgebra'
-import { Bounded } from './Bounded'
-import { Contravariant2 } from './Contravariant'
-import { Eq } from './Eq'
-import { identity, pipe, unsafeCoerce } from './function'
-import { flap as flap_, Functor2 } from './Functor'
-import { HeytingAlgebra } from './HeytingAlgebra'
-import { Monoid } from './Monoid'
-import { Ord } from './Ord'
-import { Ring } from './Ring'
-import { Semigroup } from './Semigroup'
-import { Semiring } from './Semiring'
-import { Show } from './Show'
+import { Applicative2C } from './Applicative.ts'
+import { Apply2C } from './Apply.ts'
+import { Bifunctor2 } from './Bifunctor.ts'
+import { BooleanAlgebra } from './BooleanAlgebra.ts'
+import { Bounded } from './Bounded.ts'
+import { Contravariant2 } from './Contravariant.ts'
+import { Eq } from './Eq.ts'
+import { identity, pipe, unsafeCoerce } from './function.ts'
+import { flap as flap_, Functor2 } from './Functor.ts'
+import { HeytingAlgebra } from './HeytingAlgebra.ts'
+import { Monoid } from './Monoid.ts'
+import { Ord } from './Ord.ts'
+import { Ring } from './Ring.ts'
+import { Semigroup } from './Semigroup.ts'
+import { Semiring } from './Semiring.ts'
+import { Show } from './Show.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -217,9 +217,7 @@ export const Functor: Functor2<URI> = {
  * @category combinators
  * @since 2.10.0
  */
-export const flap =
-  /*#__PURE__*/
-  flap_(Functor)
+export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
  * @category instances
@@ -245,7 +243,9 @@ export const Bifunctor: Bifunctor2<URI> = {
 // -------------------------------------------------------------------------------------
 
 /**
- * Use small, specific instances instead.
+ * This instance is deprecated, use small, specific instances instead.
+ * For example if a function needs a `Functor` instance, pass `C.Functor` instead of `C.const_`
+ * (where `C` is from `import C from 'fp-ts/Const'`)
  *
  * @category instances
  * @since 2.0.0

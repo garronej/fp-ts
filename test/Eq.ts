@@ -1,10 +1,10 @@
-import * as U from './util'
-import * as _ from '../src/Eq'
-import { concatAll } from '../src/Monoid'
-import { pipe } from '../src/function'
-import * as B from '../src/boolean'
-import * as S from '../src/string'
-import * as N from '../src/number'
+import * as U from './util.ts'
+import * as _ from '../src/Eq.ts'
+import { concatAll } from '../src/Monoid.ts'
+import { pipe } from '../src/function.ts'
+import * as B from '../src/boolean.ts'
+import * as S from '../src/string.ts'
+import * as N from '../src/number.ts'
 
 describe('Eq', () => {
   describe('pipeables', () => {
@@ -79,7 +79,6 @@ describe('Eq', () => {
   })
 
   it('eqDate', () => {
-    // tslint:disable-next-line: deprecation
     const E = _.eqDate
     U.deepStrictEqual(E.equals(new Date(0), new Date(0)), true)
     U.deepStrictEqual(E.equals(new Date(0), new Date(1)), false)

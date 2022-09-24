@@ -5,7 +5,7 @@
  *
  * @since 2.0.0
  */
-import { JoinSemilattice } from './JoinSemilattice'
+import { JoinSemilattice } from './JoinSemilattice.ts'
 
 // -------------------------------------------------------------------------------------
 // model

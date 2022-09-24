@@ -1,6 +1,6 @@
-import * as _ from '../../src/TaskOption'
-import * as TE from '../../src/TaskEither'
-import { pipe } from '../../src/function'
+import * as _ from '../../src/TaskOption.ts'
+import * as TE from '../../src/TaskEither.ts'
+import { pipe } from '../../src/function.ts'
 
 declare const tesn: TE.TaskEither<string, number>
 

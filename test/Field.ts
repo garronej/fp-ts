@@ -1,6 +1,6 @@
-import * as U from './util'
-import * as _ from '../src/Field'
-import * as N from '../src/number'
+import * as U from './util.ts'
+import * as _ from '../src/Field.ts'
+import * as N from '../src/number.ts'
 
 describe('Field', () => {
   it('gcd', () => {
@@ -17,7 +17,6 @@ describe('Field', () => {
   })
 
   it('fieldNumber', () => {
-    // tslint:disable-next-line: deprecation
     const F = _.fieldNumber
     U.deepStrictEqual(F.add(1, 2), 3)
     U.deepStrictEqual(F.div(4, 2), 2)

@@ -1,12 +1,12 @@
-import * as B from '../src/boolean'
-import { pipe } from '../src/function'
-import { concatAll } from '../src/Monoid'
-import * as N from '../src/number'
-import * as _ from '../src/Ord'
-import { sort } from '../src/ReadonlyArray'
-import * as RR from '../src/ReadonlyRecord'
-import * as S from '../src/string'
-import * as U from './util'
+import * as B from '../src/boolean.ts'
+import { pipe } from '../src/function.ts'
+import { concatAll } from '../src/Monoid.ts'
+import * as N from '../src/number.ts'
+import * as _ from '../src/Ord.ts'
+import { sort } from '../src/ReadonlyArray.ts'
+import * as RR from '../src/ReadonlyRecord.ts'
+import * as S from '../src/string.ts'
+import * as U from './util.ts'
 
 describe('Ord', () => {
   it('tuple', () => {
@@ -161,7 +161,6 @@ describe('Ord', () => {
   })
 
   it('ordDate', () => {
-    // tslint:disable-next-line: deprecation
     const O = _.ordDate
     U.deepStrictEqual(O.compare(new Date(0), new Date(0)), 0)
     U.deepStrictEqual(O.compare(new Date(0), new Date(1)), -1)

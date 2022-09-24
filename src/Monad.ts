@@ -21,9 +21,9 @@ import {
   Applicative3,
   Applicative3C,
   Applicative4
-} from './Applicative'
-import { Chain, Chain1, Chain2, Chain2C, Chain3, Chain3C, Chain4 } from './Chain'
-import { URIS, URIS2, URIS3, URIS4 } from './HKT'
+} from './Applicative.ts'
+import { Chain, Chain1, Chain2, Chain2C, Chain3, Chain3C, Chain4 } from './Chain.ts'
+import { URIS, URIS2, URIS3, URIS4 } from './HKT.ts'
 
 // -------------------------------------------------------------------------------------
 // model

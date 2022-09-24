@@ -3,7 +3,7 @@
  *
  * @since 2.0.0
  */
-import { IO } from './IO'
+import { IO } from './IO.ts'
 
 /**
  * @example

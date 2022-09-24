@@ -3,9 +3,9 @@
  *
  * @since 2.0.0
  */
-import { BoundedLattice } from './BoundedLattice'
-import { DistributiveLattice, getMinMaxDistributiveLattice } from './DistributiveLattice'
-import { Ord } from './Ord'
+import { BoundedLattice } from './BoundedLattice.ts'
+import { DistributiveLattice, getMinMaxDistributiveLattice } from './DistributiveLattice.ts'
+import { Ord } from './Ord.ts'
 
 // -------------------------------------------------------------------------------------
 // model

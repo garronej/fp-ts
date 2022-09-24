@@ -1,7 +1,7 @@
-import * as _ from '../../src/ReadonlySet'
-import * as N from '../../src/number'
-import { pipe } from '../../src/function'
-import * as E from '../../src/Either'
+import * as _ from '../../src/ReadonlySet.ts'
+import * as N from '../../src/number.ts'
+import { pipe } from '../../src/function.ts'
+import * as E from '../../src/Either.ts'
 
 declare const me: ReadonlySet<number>
 

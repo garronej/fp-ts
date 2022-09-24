@@ -1,11 +1,11 @@
-import { pipe } from '../src/function'
-import * as RT from '../src/ReaderTask'
-import * as RA from '../src/ReadonlyArray'
-import * as RR from '../src/ReadonlyRecord'
-import * as T from '../src/Task'
-import * as S from '../src/string'
-import * as _ from '../src/Witherable'
-import * as U from './util'
+import { pipe } from '../src/function.ts'
+import * as RT from '../src/ReaderTask.ts'
+import * as RA from '../src/ReadonlyArray.ts'
+import * as RR from '../src/ReadonlyRecord.ts'
+import * as T from '../src/Task.ts'
+import * as S from '../src/string.ts'
+import * as _ from '../src/Witherable.ts'
+import * as U from './util.ts'
 
 describe('Witherable', () => {
   describe('filterE', () => {

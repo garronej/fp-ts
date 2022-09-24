@@ -1,11 +1,11 @@
 /**
  * @since 2.0.0
  */
-import { Applicative, Applicative1, Applicative2, Applicative2C, Applicative3 } from './Applicative'
-import { constant, pipe } from './function'
-import { HKT, Kind, Kind2, Kind3, URIS, URIS2, URIS3, URIS4, Kind4 } from './HKT'
-import { Monad, Monad1, Monad2, Monad2C, Monad3, Monad3C } from './Monad'
-import { Monoid } from './Monoid'
+import { Applicative, Applicative1, Applicative2, Applicative2C, Applicative3 } from './Applicative.ts'
+import { constant, pipe } from './function.ts'
+import { HKT, Kind, Kind2, Kind3, URIS, URIS2, URIS3, URIS4, Kind4 } from './HKT.ts'
+import { Monad, Monad1, Monad2, Monad2C, Monad3, Monad3C } from './Monad.ts'
+import { Monoid } from './Monoid.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -229,19 +229,22 @@ export function reduceM<M, F>(
 export function intercalate<M, F extends URIS3>(
   M: Monoid<M>,
   F: Foldable3<F>
-): <R, E>(sep: M, fm: Kind3<F, R, E, M>) => M
-export function intercalate<M, F extends URIS2>(M: Monoid<M>, F: Foldable2<F>): <E>(sep: M, fm: Kind2<F, E, M>) => M
-export function intercalate<M, F extends URIS2, E>(M: Monoid<M>, F: Foldable2C<F, E>): (sep: M, fm: Kind2<F, E, M>) => M
-export function intercalate<M, F extends URIS>(M: Monoid<M>, F: Foldable1<F>): (sep: M, fm: Kind<F, M>) => M
-export function intercalate<M, F>(M: Monoid<M>, F: Foldable<F>): (sep: M, fm: HKT<F, M>) => M
-export function intercalate<M, F>(M: Monoid<M>, F: Foldable<F>): (sep: M, fm: HKT<F, M>) => M {
+): <R, E>(middle: M, fm: Kind3<F, R, E, M>) => M
+export function intercalate<M, F extends URIS2>(M: Monoid<M>, F: Foldable2<F>): <E>(middle: M, fm: Kind2<F, E, M>) => M
+export function intercalate<M, F extends URIS2, E>(
+  M: Monoid<M>,
+  F: Foldable2C<F, E>
+): (middle: M, fm: Kind2<F, E, M>) => M
+export function intercalate<M, F extends URIS>(M: Monoid<M>, F: Foldable1<F>): (middle: M, fm: Kind<F, M>) => M
+export function intercalate<M, F>(M: Monoid<M>, F: Foldable<F>): (middle: M, fm: HKT<F, M>) => M
+export function intercalate<M, F>(M: Monoid<M>, F: Foldable<F>): (middle: M, fm: HKT<F, M>) => M {
   interface Acc<M> {
     readonly init: boolean
     readonly acc: M
   }
-  return (sep, fm) => {
+  return (middle, fm) => {
     const go = ({ init, acc }: Acc<M>, x: M): Acc<M> =>
-      init ? { init: false, acc: x } : { init: false, acc: M.concat(M.concat(acc, sep), x) }
+      init ? { init: false, acc: x } : { init: false, acc: M.concat(M.concat(acc, middle), x) }
     return F.reduce(fm, { init: true, acc: M.empty }, go).acc
   }
 }
@@ -325,8 +328,6 @@ export function traverse_<M, F>(
 // -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
-
-// tslint:disable: deprecation
 
 /**
  * Use [`reduceM`](#reducem) instead

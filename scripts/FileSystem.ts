@@ -1,5 +1,5 @@
-import * as TE from '../src/TaskEither'
-import { flow } from '../src/function'
+import * as TE from '../src/TaskEither.ts'
+import { flow } from '../src/function.ts'
 import * as fs from 'fs'
 import G from 'glob'
 

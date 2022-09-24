@@ -11,8 +11,8 @@
  *
  * @since 2.0.0
  */
-import { pipe } from './function'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
+import { pipe } from './function.ts'
+import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -93,6 +93,30 @@ export interface Functor4<F extends URIS4> {
  * @category combinators
  * @since 2.10.0
  */
+export function map<F extends URIS3, G extends URIS>(
+  F: Functor3<F>,
+  G: Functor1<G>
+): <A, B>(f: (a: A) => B) => <R, E>(fa: Kind3<F, R, E, Kind<G, A>>) => Kind3<F, R, E, Kind<G, B>>
+export function map<F extends URIS2, G extends URIS2>(
+  F: Functor2<F>,
+  G: Functor2<G>
+): <A, B>(f: (a: A) => B) => <EF, EG>(fa: Kind2<F, EF, Kind2<G, EG, A>>) => Kind2<F, EF, Kind2<G, EG, B>>
+export function map<F extends URIS2, G extends URIS>(
+  F: Functor2<F>,
+  G: Functor1<G>
+): <A, B>(f: (a: A) => B) => <E>(fa: Kind2<F, E, Kind<G, A>>) => Kind2<F, E, Kind<G, B>>
+export function map<F extends URIS, G extends URIS3>(
+  F: Functor1<F>,
+  G: Functor3<G>
+): <A, B>(f: (a: A) => B) => <R, E>(fa: Kind<F, Kind3<G, R, E, A>>) => Kind<F, Kind3<G, R, E, B>>
+export function map<F extends URIS, G extends URIS2>(
+  F: Functor1<F>,
+  G: Functor2<G>
+): <A, B>(f: (a: A) => B) => <E>(fa: Kind<F, Kind2<G, E, A>>) => Kind<F, Kind2<G, E, B>>
+export function map<F extends URIS, G extends URIS>(
+  F: Functor1<F>,
+  G: Functor1<G>
+): <A, B>(f: (a: A) => B) => (fa: Kind<F, Kind<G, A>>) => Kind<F, Kind<G, B>>
 export function map<F, G extends URIS2>(
   F: Functor<F>,
   G: Functor2<G>
@@ -165,11 +189,72 @@ export function bindTo<F>(
   return (name) => (fa) => F.map(fa, (a) => ({ [name]: a } as any))
 }
 
+/**
+ * @since 2.13.0
+ */
+function let_<F extends URIS4>(
+  F: Functor4<F>
+): <N extends string, A, B>(
+  name: Exclude<N, keyof A>,
+  f: (a: A) => B
+) => <S, R, E>(
+  fa: Kind4<F, S, R, E, A>
+) => Kind4<F, S, R, E, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }>
+function let_<F extends URIS3>(
+  F: Functor3<F>
+): <N extends string, A, B>(
+  name: Exclude<N, keyof A>,
+  f: (a: A) => B
+) => <R, E>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }>
+function let_<F extends URIS3, E>(
+  F: Functor3C<F, E>
+): <N extends string, A, B>(
+  name: Exclude<N, keyof A>,
+  f: (a: A) => B
+) => <R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }>
+function let_<F extends URIS2>(
+  F: Functor2<F>
+): <N extends string, A, B>(
+  name: Exclude<N, keyof A>,
+  f: (a: A) => B
+) => <E>(fa: Kind2<F, E, A>) => Kind2<F, E, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }>
+function let_<F extends URIS2, E>(
+  F: Functor2C<F, E>
+): <N extends string, A, B>(
+  name: Exclude<N, keyof A>,
+  f: (a: A) => B
+) => (fa: Kind2<F, E, A>) => Kind2<F, E, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }>
+function let_<F extends URIS>(
+  F: Functor1<F>
+): <N extends string, A, B>(
+  name: Exclude<N, keyof A>,
+  f: (a: A) => B
+) => (fa: Kind<F, A>) => Kind<F, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }>
+function let_<F>(
+  F: Functor<F>
+): <N extends string, A, B>(
+  name: Exclude<N, keyof A>,
+  f: (a: A) => B
+) => (fa: HKT<F, A>) => HKT<F, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }>
+function let_<F>(
+  F: Functor<F>
+): <N extends string, A, B>(
+  name: Exclude<N, keyof A>,
+  f: (a: A) => B
+) => (fa: HKT<F, A>) => HKT<F, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }> {
+  return (name, f) => (fa) => F.map(fa, (a) => Object.assign({}, a, { [name]: f(a) }) as any)
+}
+
+export {
+  /**
+   * @since 2.13.0
+   */
+  let_ as let
+}
+
 // -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
-
-// tslint:disable: deprecation
 
 /**
  * @since 2.0.0

@@ -6,21 +6,19 @@ import {
   ApplicativeComposition22C,
   ApplicativeCompositionHKT2C,
   getApplicativeComposition
-} from './Applicative'
-import * as E from './Either'
-import { Lazy } from './function'
-import { HKT, Kind, Kind2, URIS, URIS2 } from './HKT'
-import * as _ from './internal'
-import { Monad, Monad1, Monad2 } from './Monad'
-import { Semigroup } from './Semigroup'
+} from './Applicative.ts'
+import * as E from './Either.ts'
+import { Lazy } from './function.ts'
+import { HKT, Kind, Kind2, URIS, URIS2 } from './HKT.ts'
+import * as _ from './internal.ts'
+import { Monad, Monad1, Monad2 } from './Monad.ts'
+import { Semigroup } from './Semigroup.ts'
 
 import Either = E.Either
 
 // -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
-
-// tslint:disable: deprecation
 
 /**
  * @since 2.0.0

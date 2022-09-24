@@ -1,15 +1,15 @@
 /**
  * @since 2.10.0
  */
-import * as B from './Bounded'
-import * as E from './Eq'
-import * as F from './Field'
-import { Magma } from './Magma'
-import { Monoid } from './Monoid'
-import * as O from './Ord'
-import { Refinement } from './Refinement'
-import { Semigroup } from './Semigroup'
-import * as S from './Show'
+import * as B from './Bounded.ts'
+import * as E from './Eq.ts'
+import * as F from './Field.ts'
+import { Magma } from './Magma.ts'
+import { Monoid } from './Monoid.ts'
+import * as O from './Ord.ts'
+import { Refinement } from './Refinement.ts'
+import { Semigroup } from './Semigroup.ts'
+import * as S from './Show.ts'
 
 // -------------------------------------------------------------------------------------
 // refinements

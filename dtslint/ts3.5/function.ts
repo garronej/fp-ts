@@ -1,5 +1,5 @@
-import * as _ from '../../src/function'
-import * as RA from '../../src/ReadonlyArray'
+import * as _ from '../../src/function.ts'
+import * as RA from '../../src/ReadonlyArray.ts'
 
 //
 // flip

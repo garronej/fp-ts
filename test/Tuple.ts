@@ -1,10 +1,10 @@
-import * as U from './util'
-import { getMonoid } from '../src/Array'
-import { left, right } from '../src/Either'
-import { identity, pipe } from '../src/function'
-import * as S from '../src/string'
-import * as O from '../src/Option'
-import * as _ from '../src/Tuple'
+import * as U from './util.ts'
+import { getMonoid } from '../src/Array.ts'
+import { left, right } from '../src/Either.ts'
+import { identity, pipe } from '../src/function.ts'
+import * as S from '../src/string.ts'
+import * as O from '../src/Option.ts'
+import * as _ from '../src/Tuple.ts'
 import * as assert from 'assert'
 
 describe('Tuple', () => {

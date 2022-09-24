@@ -1,10 +1,10 @@
 /**
  * @since 2.10.0
  */
-import { Either, Left, Right } from './Either'
-import { NonEmptyArray } from './NonEmptyArray'
-import { None, Option, Some } from './Option'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { Either, Left, Right } from './Either.ts'
+import { NonEmptyArray } from './NonEmptyArray.ts'
+import { None, Option, Some } from './Option.ts'
+import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray.ts'
 
 // -------------------------------------------------------------------------------------
 // Option

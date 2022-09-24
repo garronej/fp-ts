@@ -11,7 +11,7 @@
  *
  * @since 2.0.0
  */
-import { pipe } from './function'
+import { pipe } from './function.ts'
 import {
   Functor,
   Functor1,
@@ -29,8 +29,8 @@ import {
   FunctorComposition22C,
   FunctorComposition2C1,
   getFunctorComposition
-} from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
+} from './Functor.ts'
+import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -120,8 +120,6 @@ export function mapWithIndex<F, I, G, J>(
 // -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
-
-// tslint:disable: deprecation
 
 /**
  * @since 2.0.0

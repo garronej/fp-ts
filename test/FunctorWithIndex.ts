@@ -1,10 +1,9 @@
-import * as U from './util'
-import * as RA from '../src/ReadonlyArray'
-import { getFunctorWithIndexComposition } from '../src/FunctorWithIndex'
+import * as U from './util.ts'
+import * as RA from '../src/ReadonlyArray.ts'
+import { getFunctorWithIndexComposition } from '../src/FunctorWithIndex.ts'
 
 describe('FunctorWithIndex', () => {
   it('getFunctorComposition', () => {
-    // tslint:disable-next-line: deprecation
     const FWI = getFunctorWithIndexComposition(RA.FunctorWithIndex, RA.FunctorWithIndex)
     const f = ([i, j]: readonly [number, number], a: string) => a + i + j
     U.deepStrictEqual(

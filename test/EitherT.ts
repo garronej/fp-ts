@@ -1,10 +1,9 @@
-import * as U from './util'
-import * as E from '../src/Either'
-import { getEitherM } from '../src/EitherT'
-import * as I from '../src/IO'
+import * as U from './util.ts'
+import * as E from '../src/Either.ts'
+import { getEitherM } from '../src/EitherT.ts'
+import * as I from '../src/IO.ts'
 
 describe('EitherT', () => {
-  // tslint:disable-next-line: deprecation
   const T = getEitherM(I.Monad)
 
   it('fold', () => {

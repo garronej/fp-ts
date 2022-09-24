@@ -22,9 +22,9 @@ import {
   CompactableComposition22,
   CompactableComposition23,
   separate
-} from './Compactable'
-import { Either } from './Either'
-import { pipe } from './function'
+} from './Compactable.ts'
+import { Either } from './Either.ts'
+import { pipe } from './function.ts'
 import {
   Functor,
   Functor1,
@@ -41,12 +41,12 @@ import {
   FunctorComposition22,
   FunctorComposition23,
   getFunctorComposition
-} from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { getLeft, getRight, Option } from './Option'
-import { not, Predicate } from './Predicate'
-import { Refinement } from './Refinement'
-import { separated, Separated } from './Separated'
+} from './Functor.ts'
+import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT.ts'
+import { getLeft, getRight, Option } from './Option.ts'
+import { not, Predicate } from './Predicate.ts'
+import { Refinement } from './Refinement.ts'
+import { separated, Separated } from './Separated.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -472,8 +472,6 @@ export function partitionMap<F, G>(
 // -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
-
-// tslint:disable: deprecation
 
 /**
  * @since 2.0.0

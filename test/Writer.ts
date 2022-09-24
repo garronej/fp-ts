@@ -1,7 +1,7 @@
-import * as U from './util'
-import { pipe, tuple } from '../src/function'
-import * as S from '../src/string'
-import * as _ from '../src/Writer'
+import * as U from './util.ts'
+import { pipe, tuple } from '../src/function.ts'
+import * as S from '../src/string.ts'
+import * as _ from '../src/Writer.ts'
 
 describe('Writer', () => {
   describe('pipeables', () => {
@@ -13,7 +13,6 @@ describe('Writer', () => {
 
   it('evalWriter', () => {
     U.deepStrictEqual(
-      // tslint:disable-next-line: deprecation
       _.evalWriter(() => [1, 'a']),
       1
     )
@@ -21,7 +20,6 @@ describe('Writer', () => {
 
   it('execWriter', () => {
     U.deepStrictEqual(
-      // tslint:disable-next-line: deprecation
       _.execWriter(() => [1, 'a']),
       'a'
     )
@@ -84,7 +82,10 @@ describe('Writer', () => {
 
     it('chain', () => {
       const fa: _.Writer<string, number> = () => [1, 'a']
-      const f = (n: number): _.Writer<string, number> => () => [n * 2, 'b']
+      const f =
+        (n: number): _.Writer<string, number> =>
+        () =>
+          [n * 2, 'b']
       U.deepStrictEqual(M.chain(fa, f)(), [2, 'ab'])
     })
   })

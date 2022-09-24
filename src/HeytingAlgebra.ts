@@ -21,7 +21,7 @@
  *
  * @since 2.0.0
  */
-import { BoundedDistributiveLattice } from './BoundedDistributiveLattice'
+import { BoundedDistributiveLattice } from './BoundedDistributiveLattice.ts'
 
 // -------------------------------------------------------------------------------------
 // model

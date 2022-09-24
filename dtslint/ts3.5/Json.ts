@@ -1,6 +1,6 @@
-import * as E from '../../src/Either'
-import { pipe } from '../../src/function'
-import * as _ from '../../src/Json'
+import * as E from '../../src/Either.ts'
+import { pipe } from '../../src/function.ts'
+import * as _ from '../../src/Json.ts'
 
 //
 // stringify

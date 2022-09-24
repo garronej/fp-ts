@@ -1,5 +1,5 @@
 import * as Benchmark from 'benchmark'
-import * as _ from '../../src/ReadonlyNonEmptyArray'
+import * as _ from '../../src/ReadonlyNonEmptyArray.ts'
 
 /*
 snoc x 11,443,076 ops/sec ±1.78% (85 runs sampled)

@@ -1,14 +1,14 @@
 /**
  * @since 2.2.0
  */
-import * as BA from './BooleanAlgebra'
-import * as E from './Eq'
-import { Lazy } from './function'
-import { Monoid } from './Monoid'
-import * as O from './Ord'
-import { Refinement } from './Refinement'
-import { Semigroup } from './Semigroup'
-import * as S from './Show'
+import * as BA from './BooleanAlgebra.ts'
+import * as E from './Eq.ts'
+import { Lazy } from './function.ts'
+import { Monoid } from './Monoid.ts'
+import * as O from './Ord.ts'
+import { Refinement } from './Refinement.ts'
+import { Semigroup } from './Semigroup.ts'
+import * as S from './Show.ts'
 
 // -------------------------------------------------------------------------------------
 // refinements
@@ -27,11 +27,15 @@ export const isBoolean: Refinement<unknown, boolean> = (u: unknown): u is boolea
 /**
  * Less strict version of [`match`](#match).
  *
+ * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
+ *
  * @category destructors
  * @since 2.10.0
  */
-export const matchW = <A, B>(onFalse: Lazy<A>, onTrue: Lazy<B>) => (value: boolean): A | B =>
-  value ? onTrue() : onFalse()
+export const matchW =
+  <A, B>(onFalse: Lazy<A>, onTrue: Lazy<B>) =>
+  (value: boolean): A | B =>
+    value ? onTrue() : onFalse()
 
 /**
  * Alias of [`matchW`](#matchw).

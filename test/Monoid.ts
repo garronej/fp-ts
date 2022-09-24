@@ -1,9 +1,9 @@
-import * as B from '../src/boolean'
-import { increment } from '../src/function'
-import * as _ from '../src/Monoid'
-import * as N from '../src/number'
-import * as S from '../src/string'
-import * as U from './util'
+import * as B from '../src/boolean.ts'
+import { increment } from '../src/function.ts'
+import * as _ from '../src/Monoid.ts'
+import * as N from '../src/number.ts'
+import * as S from '../src/string.ts'
+import * as U from './util.ts'
 
 describe('Monoid', () => {
   it('tuple', () => {
@@ -18,7 +18,6 @@ describe('Monoid', () => {
   })
 
   it('getEndomorphismMonoid', () => {
-    // tslint:disable-next-line: deprecation
     const M = _.getEndomorphismMonoid<number>()
     const f = M.concat(U.double, increment)
     U.deepStrictEqual(f(3), 8)

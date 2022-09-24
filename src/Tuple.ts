@@ -1,24 +1,24 @@
 /**
  * @since 2.0.0
  */
-import { Applicative, Applicative2C } from './Applicative'
-import { Apply2C } from './Apply'
-import { Bifunctor2 } from './Bifunctor'
-import { Chain2C } from './Chain'
-import { ChainRec2C } from './ChainRec'
-import { Comonad2 } from './Comonad'
-import { Foldable2 } from './Foldable'
-import { Monad2C } from './Monad'
-import { Monoid } from './Monoid'
-import * as RT from './ReadonlyTuple'
-import { Semigroup } from './Semigroup'
-import { Semigroupoid2 } from './Semigroupoid'
-import { Traversable2, PipeableTraverse2 } from './Traversable'
-import { flap as flap_, Functor2 } from './Functor'
-import { Extend2 } from './Extend'
-import { Either } from './Either'
-import { identity, pipe } from './function'
-import { HKT } from './HKT'
+import { Applicative, Applicative2C } from './Applicative.ts'
+import { Apply2C } from './Apply.ts'
+import { Bifunctor2 } from './Bifunctor.ts'
+import { Chain2C } from './Chain.ts'
+import { ChainRec2C } from './ChainRec.ts'
+import { Comonad2 } from './Comonad.ts'
+import { Foldable2 } from './Foldable.ts'
+import { Monad2C } from './Monad.ts'
+import { Monoid } from './Monoid.ts'
+import * as RT from './ReadonlyTuple.ts'
+import { Semigroup } from './Semigroup.ts'
+import { Semigroupoid2 } from './Semigroupoid.ts'
+import { Traversable2, PipeableTraverse2 } from './Traversable.ts'
+import { flap as flap_, Functor2 } from './Functor.ts'
+import { Extend2 } from './Extend.ts'
+import { Either } from './Either.ts'
+import { identity, pipe } from './function.ts'
+import { HKT } from './HKT.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -55,9 +55,11 @@ export function getApply<S>(S: Semigroup<S>): Apply2C<URI, S> {
   }
 }
 
-const of = <M>(M: Monoid<M>) => <A>(a: A): [A, M] => {
-  return [a, M.empty]
-}
+const of =
+  <M>(M: Monoid<M>) =>
+  <A>(a: A): [A, M] => {
+    return [a, M.empty]
+  }
 
 /**
  * @category instances
@@ -175,9 +177,8 @@ function _traverse<F>(F: Applicative<F>): <A, S, B>(ta: [A, S], f: (a: A) => HKT
  * @category Bifunctor
  * @since 2.0.0
  */
-export const bimap: <E, G, A, B>(mapSnd: (e: E) => G, mapFst: (a: A) => B) => (fa: [A, E]) => [B, G] = (f, g) => (
-  fa
-) => [g(fst(fa)), f(snd(fa))]
+export const bimap: <E, G, A, B>(mapSnd: (e: E) => G, mapFst: (a: A) => B) => (fa: [A, E]) => [B, G] = (f, g) => (fa) =>
+  [g(fst(fa)), f(snd(fa))]
 
 /**
  * Map a function over the first component of a `Tuple`.
@@ -217,9 +218,7 @@ export const extend: <E, A, B>(f: (wa: [A, E]) => B) => (wa: [A, E]) => [B, E] =
  * @category combinators
  * @since 2.0.0
  */
-export const duplicate: <E, A>(wa: [A, E]) => [[A, E], E] =
-  /*#__PURE__*/
-  extend(identity)
+export const duplicate: <E, A>(wa: [A, E]) => [[A, E], E] = /*#__PURE__*/ extend(identity)
 
 /**
  * @category Extract
@@ -257,11 +256,11 @@ export const traverse: PipeableTraverse2<URI> = <F>(
 /**
  * @since 2.6.3
  */
-export const sequence: Traversable2<URI>['sequence'] = <F>(F: Applicative<F>) => <A, E>(
-  fas: [HKT<F, A>, E]
-): HKT<F, [A, E]> => {
-  return F.map(fst(fas), (a) => [a, snd(fas)])
-}
+export const sequence: Traversable2<URI>['sequence'] =
+  <F>(F: Applicative<F>) =>
+  <A, E>(fas: [HKT<F, A>, E]): HKT<F, [A, E]> => {
+    return F.map(fst(fas), (a) => [a, snd(fas)])
+  }
 
 // -------------------------------------------------------------------------------------
 // instances
@@ -300,9 +299,7 @@ export const Functor: Functor2<URI> = {
  * @category combinators
  * @since 2.10.0
  */
-export const flap =
-  /*#__PURE__*/
-  flap_(Functor)
+export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
  * @category instances
@@ -380,7 +377,9 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: [A, E]) => [B, E] = mapFst
 export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: [A, E]) => [A, G] = mapSnd
 
 /**
- * Use small, specific instances instead.
+ * This instance is deprecated, use small, specific instances instead.
+ * For example if a function needs a `Functor` instance, pass `T.Functor` instead of `T.tuple`
+ * (where `T` is from `import T from 'fp-ts/Tuple'`)
  *
  * @category instances
  * @since 2.0.0

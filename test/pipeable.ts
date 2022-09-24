@@ -1,17 +1,15 @@
-import * as U from './util'
-import * as RA from '../src/ReadonlyArray'
-import * as C from '../src/Const'
-import * as E from '../src/Either'
-import { fold } from '../src/Monoid'
-import * as O from '../src/Option'
-import { pipeable } from '../src/pipeable'
-import * as R from '../src/Reader'
-import { pipe } from '../src/function'
-import * as N from '../src/number'
-import { separated } from '../src/Separated'
+import * as U from './util.ts'
+import * as RA from '../src/ReadonlyArray.ts'
+import * as C from '../src/Const.ts'
+import * as E from '../src/Either.ts'
+import { fold } from '../src/Monoid.ts'
+import * as O from '../src/Option.ts'
+import { pipeable } from '../src/pipeable.ts'
+import * as R from '../src/Reader.ts'
+import { pipe } from '../src/function.ts'
+import * as N from '../src/number.ts'
+import { separated } from '../src/Separated.ts'
 import * as assert from 'assert'
-
-// tslint:disable: deprecation
 
 describe('pipeable', () => {
   it('{}', () => {

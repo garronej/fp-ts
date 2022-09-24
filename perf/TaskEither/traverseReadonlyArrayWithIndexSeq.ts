@@ -1,7 +1,7 @@
 import * as Benchmark from 'benchmark'
-import * as RNEA from '../../src/ReadonlyNonEmptyArray'
-import * as _ from '../../src/TaskEither'
-import { pipe } from '../../src/function'
+import * as RNEA from '../../src/ReadonlyNonEmptyArray.ts'
+import * as _ from '../../src/TaskEither.ts'
+import { pipe } from '../../src/function.ts'
 
 /*
 A.traverseWithIndex(_.ApplicativeSeq) x 309 ops/sec ±8.49% (67 runs sampled)

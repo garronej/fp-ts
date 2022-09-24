@@ -9,8 +9,8 @@
  *
  * @since 2.0.0
  */
-import { Either } from './Either'
-import { pipe } from './function'
+import { Either } from './Either.ts'
+import { pipe } from './function.ts'
 import {
   Functor,
   Functor1,
@@ -29,10 +29,10 @@ import {
   FunctorComposition2C1,
   getFunctorComposition,
   map
-} from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { getLeft, getRight, Option } from './Option'
-import * as S from './Separated'
+} from './Functor.ts'
+import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT.ts'
+import { getLeft, getRight, Option } from './Option.ts'
+import * as S from './Separated.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -189,8 +189,6 @@ export function separate<F, G>(
 // -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
-
-// tslint:disable: deprecation
 
 /**
  * @since 2.0.0

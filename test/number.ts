@@ -1,5 +1,5 @@
-import * as U from './util'
-import * as _ from '../src/number'
+import * as U from './util.ts'
+import * as _ from '../src/number.ts'
 
 describe('string', () => {
   it('Ord', () => {

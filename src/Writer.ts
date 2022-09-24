@@ -1,15 +1,15 @@
 /**
  * @since 2.0.0
  */
-import { Applicative2C } from './Applicative'
-import { Apply2C } from './Apply'
-import { Chain2C } from './Chain'
-import { pipe } from './function'
-import { flap as flap_, Functor2 } from './Functor'
-import { Monad2C } from './Monad'
-import { Monoid } from './Monoid'
-import { Pointed2C } from './Pointed'
-import { Semigroup } from './Semigroup'
+import { Applicative2C } from './Applicative.ts'
+import { Apply2C } from './Apply.ts'
+import { Chain2C } from './Chain.ts'
+import { pipe } from './function.ts'
+import { flap as flap_, Functor2 } from './Functor.ts'
+import { Monad2C } from './Monad.ts'
+import { Monoid } from './Monoid.ts'
+import { Pointed2C } from './Pointed.ts'
+import { Semigroup } from './Semigroup.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -24,16 +24,20 @@ export interface Writer<W, A> {
 }
 
 // -------------------------------------------------------------------------------------
-// combinators
+// constructors
 // -------------------------------------------------------------------------------------
 
 /**
  * Appends a value to the accumulator
  *
- * @category combinators
+ * @category constructors
  * @since 2.0.0
  */
 export const tell: <W>(w: W) => Writer<W, void> = (w) => () => [undefined, w]
+
+// -------------------------------------------------------------------------------------
+// combinators
+// -------------------------------------------------------------------------------------
 
 /**
  * Modifies the result to include the changes to the accumulator
@@ -169,8 +173,8 @@ export const getApplicative = <W>(M: Monoid<W>): Applicative2C<URI, W> => {
  * @category instances
  * @since 2.10.0
  */
-export function getChain<W>(M: Monoid<W>): Chain2C<URI, W> {
-  const A = getApply(M)
+export function getChain<W>(S: Semigroup<W>): Chain2C<URI, W> {
+  const A = getApply(S)
   return {
     URI,
     _E: undefined as any,
@@ -179,7 +183,7 @@ export function getChain<W>(M: Monoid<W>): Chain2C<URI, W> {
     chain: (fa, f) => () => {
       const [a, w1] = fa()
       const [b, w2] = f(a)()
-      return [b, M.concat(w1, w2)]
+      return [b, S.concat(w1, w2)]
     }
   }
 }
@@ -216,9 +220,7 @@ export const Functor: Functor2<URI> = {
  * @category combinators
  * @since 2.10.0
  */
-export const flap =
-  /*#__PURE__*/
-  flap_(Functor)
+export const flap = /*#__PURE__*/ flap_(Functor)
 
 // -------------------------------------------------------------------------------------
 // utils

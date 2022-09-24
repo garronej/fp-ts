@@ -1,8 +1,8 @@
-import * as _ from '../../src/Array'
-import { identity, pipe } from '../../src/function'
-import * as N from '../../src/number'
-import { Ord } from '../../src/Ord'
-import * as E from '../../src/Either'
+import * as _ from '../../src/Array.ts'
+import { identity, pipe } from '../../src/function.ts'
+import * as N from '../../src/number.ts'
+import { Ord } from '../../src/Ord.ts'
+import * as E from '../../src/Either.ts'
 
 declare const us: Array<unknown>
 declare const ns: Array<number>
@@ -131,11 +131,11 @@ pipe(x2s, _.sortBy([ord2, ord3])) // $ExpectType X2[]
 // Do
 //
 
-// $ExpectType { readonly a: number; readonly b: string; }[]
+// $ExpectType { readonly a1: number; readonly a2: string; }[]
 pipe(
   _.Do,
-  _.bind('a', () => _.of(1)),
-  _.bind('b', () => _.of('b'))
+  _.bind('a1', () => _.of(1)),
+  _.bind('a2', () => _.of('b'))
 )
 
 //

@@ -1,6 +1,6 @@
-import { pipe } from '../src/function'
-import * as _ from '../src/Predicate'
-import * as U from './util'
+import { pipe } from '../src/function.ts'
+import * as _ from '../src/Predicate.ts'
+import * as U from './util.ts'
 
 const isPositive: _.Predicate<number> = (n) => n > 0
 const isNegative: _.Predicate<number> = (n) => n < 0

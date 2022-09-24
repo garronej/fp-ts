@@ -10,8 +10,8 @@
  *
  * @since 2.0.0
  */
-import { HeytingAlgebra } from './HeytingAlgebra'
-import { getBooleanAlgebra } from './function'
+import { HeytingAlgebra } from './HeytingAlgebra.ts'
+import { getBooleanAlgebra } from './function.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -95,6 +95,5 @@ export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
  * @since 2.0.0
  * @deprecated
  */
-export const getFunctionBooleanAlgebra: <B>(
-  B: BooleanAlgebra<B>
-) => <A = never>() => BooleanAlgebra<(a: A) => B> = getBooleanAlgebra
+export const getFunctionBooleanAlgebra: <B>(B: BooleanAlgebra<B>) => <A = never>() => BooleanAlgebra<(a: A) => B> =
+  getBooleanAlgebra

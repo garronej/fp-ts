@@ -1,5 +1,5 @@
-import * as U from './util'
-import * as _ from '../src/Random'
+import * as U from './util.ts'
+import * as _ from '../src/Random.ts'
 
 describe('Random', () => {
   it('random', () => {

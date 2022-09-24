@@ -1,11 +1,11 @@
-import * as U from './util'
-import * as RA from '../src/ReadonlyArray'
-import * as I from '../src/IO'
-import * as O from '../src/Option'
-import * as T from '../src/Tree'
-import * as _ from '../src/Foldable'
-import { pipe } from '../src/function'
-import * as S from '../src/string'
+import * as U from './util.ts'
+import * as RA from '../src/ReadonlyArray.ts'
+import * as I from '../src/IO.ts'
+import * as O from '../src/Option.ts'
+import * as T from '../src/Tree.ts'
+import * as _ from '../src/Foldable.ts'
+import { pipe } from '../src/function.ts'
+import * as S from '../src/string.ts'
 
 export const ArrayOptionURI = 'ArrayOption'
 
@@ -13,7 +13,6 @@ export type ArrayOptionURI = typeof ArrayOptionURI
 
 describe('Foldable', () => {
   it('getFoldableComposition', () => {
-    // tslint:disable-next-line: deprecation
     const F = _.getFoldableComposition(RA.Foldable, O.Foldable)
     // reduce
     U.deepStrictEqual(F.reduce([O.some('a'), O.some('b'), O.some('c')], '', S.Semigroup.concat), 'abc')
@@ -68,17 +67,14 @@ describe('Foldable', () => {
 
   it('foldM', () => {
     U.deepStrictEqual(
-      // tslint:disable-next-line: deprecation
       _.foldM(O.Monad, RA.Foldable)([], 1, () => O.none),
       O.some(1)
     )
     U.deepStrictEqual(
-      // tslint:disable-next-line: deprecation
       _.foldM(O.Monad, RA.Foldable)([2], 1, () => O.none),
       O.none
     )
     U.deepStrictEqual(
-      // tslint:disable-next-line: deprecation
       _.foldM(O.Monad, RA.Foldable)([2], 1, (b, a) => O.some(b + a)),
       O.some(3)
     )

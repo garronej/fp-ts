@@ -1,8 +1,8 @@
 /**
  * @since 2.11.0
  */
-import * as M from './Monoid'
-import * as Se from './Semigroup'
+import * as M from './Monoid.ts'
+import * as Se from './Semigroup.ts'
 
 // -------------------------------------------------------------------------------------
 // instances

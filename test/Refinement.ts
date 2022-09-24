@@ -1,12 +1,12 @@
-import * as B from '../src/boolean'
-import * as E from '../src/Either'
-import { pipe } from '../src/function'
-import * as N from '../src/number'
-import * as O from '../src/Option'
-import { ReadonlyRecord } from '../src/ReadonlyRecord'
-import * as _ from '../src/Refinement'
-import * as S from '../src/string'
-import * as U from './util'
+import * as B from '../src/boolean.ts'
+import * as E from '../src/Either.ts'
+import { pipe } from '../src/function.ts'
+import * as N from '../src/number.ts'
+import * as O from '../src/Option.ts'
+import { ReadonlyRecord } from '../src/ReadonlyRecord.ts'
+import * as _ from '../src/Refinement.ts'
+import * as S from '../src/string.ts'
+import * as U from './util.ts'
 
 interface NonEmptyStringBrand {
   readonly NonEmptyString: unique symbol

@@ -6,8 +6,8 @@
  *
  * @since 2.0.0
  */
-import { JoinSemilattice } from './JoinSemilattice'
-import { MeetSemilattice } from './MeetSemilattice'
+import { JoinSemilattice } from './JoinSemilattice.ts'
+import { MeetSemilattice } from './MeetSemilattice.ts'
 
 // -------------------------------------------------------------------------------------
 // model

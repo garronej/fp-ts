@@ -1,10 +1,10 @@
 /**
  * @since 2.0.0
  */
-import { Comonad2C } from './Comonad'
-import { flap as flap_, Functor2 } from './Functor'
-import { Monoid } from './Monoid'
-import { pipe } from './function'
+import { Comonad2C } from './Comonad.ts'
+import { flap as flap_, Functor2 } from './Functor.ts'
+import { Monoid } from './Monoid.ts'
+import { pipe } from './function.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -134,9 +134,7 @@ export const Functor: Functor2<URI> = {
  * @category combinators
  * @since 2.10.0
  */
-export const flap =
-  /*#__PURE__*/
-  flap_(Functor)
+export const flap = /*#__PURE__*/ flap_(Functor)
 
 // -------------------------------------------------------------------------------------
 // deprecated

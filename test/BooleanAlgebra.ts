@@ -1,10 +1,9 @@
-import * as U from './util'
-import * as _ from '../src/BooleanAlgebra'
-import * as B from '../src/boolean'
+import * as U from './util.ts'
+import * as _ from '../src/BooleanAlgebra.ts'
+import * as B from '../src/boolean.ts'
 
 describe('BooleanAlgebra', () => {
   it('booleanAlgebraBoolean', () => {
-    // tslint:disable-next-line: deprecation
     const BA = _.booleanAlgebraBoolean
     U.deepStrictEqual(BA.implies(true, true), true)
     U.deepStrictEqual(BA.implies(true, false), false)

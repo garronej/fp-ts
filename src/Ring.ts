@@ -9,8 +9,8 @@
  *
  * @since 2.0.0
  */
-import { getRing } from './function'
-import { Semiring } from './Semiring'
+import { getRing } from './function.ts'
+import { Semiring } from './Semiring.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -63,7 +63,10 @@ export const tuple = <A extends ReadonlyArray<unknown>>(...rings: { [K in keyof 
  *
  * @since 2.0.0
  */
-export const negate = <A>(R: Ring<A>) => (a: A) => R.sub(R.zero, a)
+export const negate =
+  <A>(R: Ring<A>) =>
+  (a: A): A =>
+    R.sub(R.zero, a)
 
 // -------------------------------------------------------------------------------------
 // deprecated

@@ -27,10 +27,10 @@ import {
   FoldableComposition22C,
   FoldableComposition2C1,
   getFoldableComposition
-} from './Foldable'
-import { pipe } from './function'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { Monoid } from './Monoid'
+} from './Foldable.ts'
+import { pipe } from './function.ts'
+import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT.ts'
+import { Monoid } from './Monoid.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -182,8 +182,6 @@ export function reduceRightWithIndex<F, I, G, J>(
 // -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
-
-// tslint:disable: deprecation
 
 /**
  * @since 2.0.0

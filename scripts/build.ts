@@ -1,11 +1,11 @@
 import * as path from 'path'
-import * as E from '../src/Either'
-import { pipe } from '../src/function'
-import * as J from '../src/Json'
-import * as RTE from '../src/ReaderTaskEither'
-import * as TE from '../src/TaskEither'
-import { FileSystem, fileSystem } from './FileSystem'
-import { run } from './run'
+import * as E from '../src/Either.ts'
+import { pipe } from '../src/function.ts'
+import * as J from '../src/Json.ts'
+import * as RTE from '../src/ReaderTaskEither.ts'
+import * as TE from '../src/TaskEither.ts'
+import { FileSystem, fileSystem } from './FileSystem.ts'
+import { run } from './run.ts'
 
 interface Build<A> extends RTE.ReaderTaskEither<FileSystem, Error, A> {}
 
@@ -78,23 +78,25 @@ function makePkgJson(module: string): TE.TaskEither<Error, string> {
 const fixHKT = (folder: string): Build<void> =>
   pipe(
     (C: FileSystem) => C.mkdir(path.join(OUTPUT_FOLDER, folder, 'HKT')),
-    RTE.chain(() => (C) =>
-      C.writeFile(
-        path.join(OUTPUT_FOLDER, folder, 'HKT', 'package.json'),
-        JSON.stringify(
-          {
-            typings: '../../HKT.d.ts'
-          },
-          null,
-          2
+    RTE.chain(
+      () => (C) =>
+        C.writeFile(
+          path.join(OUTPUT_FOLDER, folder, 'HKT', 'package.json'),
+          JSON.stringify(
+            {
+              typings: '../../HKT.d.ts'
+            },
+            null,
+            2
+          )
         )
-      )
     ),
-    RTE.chain(() => (C) =>
-      C.moveFile(path.join(OUTPUT_FOLDER, folder, 'HKT.js'), path.join(OUTPUT_FOLDER, folder, 'HKT', 'index.js'))
+    RTE.chain(
+      () => (C) =>
+        C.moveFile(path.join(OUTPUT_FOLDER, folder, 'HKT.js'), path.join(OUTPUT_FOLDER, folder, 'HKT', 'index.js'))
     ),
-    RTE.chain(() => (C) =>
-      C.moveFile(path.join(OUTPUT_FOLDER, folder, 'HKT.d.ts'), path.join(OUTPUT_FOLDER, 'HKT.d.ts'))
+    RTE.chain(
+      () => (C) => C.moveFile(path.join(OUTPUT_FOLDER, folder, 'HKT.d.ts'), path.join(OUTPUT_FOLDER, 'HKT.d.ts'))
     )
   )
 

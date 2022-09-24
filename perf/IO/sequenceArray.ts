@@ -1,7 +1,7 @@
 import * as Benchmark from 'benchmark'
-import * as RNEA from '../../src/ReadonlyNonEmptyArray'
-import * as _ from '../../src/IO'
-import { pipe } from '../../src/function'
+import * as RNEA from '../../src/ReadonlyNonEmptyArray.ts'
+import * as _ from '../../src/IO.ts'
+import { pipe } from '../../src/function.ts'
 
 /*
 A.sequence(_.Applicative) x 17,253 ops/sec ±0.28% (88 runs sampled)

@@ -1,6 +1,32 @@
 fp-ts's author [is not interested in supporting Deno](https://github.com/gcanti/fp-ts/pull/1594#issuecomment-933343833) so I publish 
 it on [deno.land/x](https://deno.land/x/fp_ts) form this fork.  
+Automatically syncs with fork, on tagged release fixes imports to use .ts extensions to run on deno natively
 
+## Setup
+in `import_map.json`
+```json
+{
+    "imports": {
+      "fp/": "https://raw.githubusercontent.com/garronej/fp-ts/2.12.3-deno/src/"
+    }
+}
+```
+post 2.12.3 change the version to tagged release you want to use
+
+example: `"fp/": "https://raw.githubusercontent.com/garronej/fp-ts/2.13.0-deno/src/"`
+
+in `deno.json`
+```json
+{
+    "importMap": "import_map.json",
+}
+```
+in `example.ts`
+```typescript
+import { Option, some, none} from "fp/Option.ts"
+const a: Option<string> = some("string");
+const b: Option<string> = none;
+```
 WARNING: [It's currently broken](https://github.com/gcanti/fp-ts/pull/1594#issuecomment-935623964) anyone who whould be willing to figure out how [the sources files](https://github.com/garronej/fp-ts/tree/master/src) should be [transformed](https://github.com/garronej/fp-ts/tree/latest/deno_dist) would just have to tell me and I'll fix it. I just don't have time to figure it out myself. 
 
 <h3 align="center">
@@ -16,9 +42,6 @@ Functional programming in TypeScript
 <p align="center">
   <a href="https://github.com/gcanti/fp-ts/actions">
     <img src="https://github.com/gcanti/fp-ts/actions/workflows/main.yml/badge.svg?branch=master" alt="build status" height="20">
-  </a>
-  <a href="https://david-dm.org/gcanti/fp-ts">
-    <img src="https://img.shields.io/david/gcanti/fp-ts.svg?style=flat-square" alt="dependency status" height="20">
   </a>
   <a href="https://www.npmjs.com/package/fp-ts">
     <img src="https://img.shields.io/npm/dm/fp-ts.svg" alt="npm downloads" height="20">
@@ -77,7 +100,7 @@ Make sure to always have a single version of `fp-ts` installed in your project. 
 If you need help with `fp-ts` check out:
 
 - this [Discord server](https://discord.gg/HVWmBBXM8A)
-- the `#fp-ts` channel on [FP slack](https://fpchat-invite.herokuapp.com).
+- the `#fp-ts` channel on [FP slack](https://fpslack.com/).
 
 # Development
 

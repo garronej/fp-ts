@@ -17,8 +17,8 @@
  *
  * @since 2.0.0
  */
-import { Apply, Apply1, Apply2, Apply2C, Apply3, Apply3C, Apply4, ap, getApplySemigroup } from './Apply'
-import { pipe } from './function'
+import { Apply, Apply1, Apply2, Apply2C, Apply3, Apply3C, Apply4, ap, getApplySemigroup } from './Apply.ts'
+import { pipe } from './function.ts'
 import {
   FunctorComposition,
   FunctorComposition11,
@@ -32,10 +32,10 @@ import {
   FunctorCompositionHKT2,
   FunctorCompositionHKT2C,
   getFunctorComposition
-} from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { Monoid } from './Monoid'
-import { Pointed, Pointed1, Pointed2, Pointed2C, Pointed3, Pointed3C, Pointed4 } from './Pointed'
+} from './Functor.ts'
+import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT.ts'
+import { Monoid } from './Monoid.ts'
+import { Pointed, Pointed1, Pointed2, Pointed2C, Pointed3, Pointed3C, Pointed4 } from './Pointed.ts'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -120,8 +120,6 @@ export function getApplicativeMonoid<F>(F: Applicative<F>): <A>(M: Monoid<A>) =>
 // -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
-
-// tslint:disable: deprecation
 
 /**
  * @since 2.0.0

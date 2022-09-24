@@ -1,19 +1,19 @@
 import * as assert from 'assert'
-import { Either, left, right } from '../src/Either'
-import { Eq, fromEquals } from '../src/Eq'
-import { identity, pipe } from '../src/function'
-import * as _ from '../src/Map'
-import * as N from '../src/number'
-import * as O from '../src/Option'
-import * as Ord from '../src/Ord'
-import * as RA from '../src/ReadonlyArray'
-import { Refinement } from '../src/Refinement'
-import * as Se from '../src/Semigroup'
-import { separated } from '../src/Separated'
-import { Show, struct } from '../src/Show'
-import * as S from '../src/string'
-import * as T from '../src/Task'
-import * as U from './util'
+import { Either, left, right } from '../src/Either.ts'
+import { Eq, fromEquals } from '../src/Eq.ts'
+import { identity, pipe } from '../src/function.ts'
+import * as _ from '../src/Map.ts'
+import * as N from '../src/number.ts'
+import * as O from '../src/Option.ts'
+import * as Ord from '../src/Ord.ts'
+import * as RA from '../src/ReadonlyArray.ts'
+import { Refinement } from '../src/Refinement.ts'
+import * as Se from '../src/Semigroup.ts'
+import { separated } from '../src/Separated.ts'
+import { Show, struct } from '../src/Show.ts'
+import * as S from '../src/string.ts'
+import * as T from '../src/Task.ts'
+import * as U from './util.ts'
 
 interface User {
   readonly id: string
@@ -367,14 +367,12 @@ describe('Map', () => {
       [{ id: 'b' }, 2],
       [{ id: 'c' }, 3]
     ])
-    // tslint:disable-next-line: deprecation
     const insertS = _.insertAt(eqUser)
     U.deepStrictEqual(insertS({ id: 'a' }, 1)(emptyMap), a1)
     U.deepStrictEqual(insertS({ id: 'a' }, 1)(a1b2), a1b2)
     U.deepStrictEqual(insertS({ id: 'a' }, 2)(a1b2), a2b2)
     U.deepStrictEqual(insertS({ id: 'c' }, 3)(a1b2), a1b2c3)
 
-    // tslint:disable-next-line: deprecation
     const insert = _.insertAt(eqKey)
     U.deepStrictEqual(insert({ id: 1 }, { value: 1 })(new Map()), new Map([[{ id: 1 }, { value: 1 }]]))
     const x = insert({ id: 1 }, value1)(repo)
@@ -530,10 +528,7 @@ describe('Map', () => {
   })
 
   it('singleton', () => {
-    U.deepStrictEqual(
-      _.singleton('k1', 0),
-      new Map<string, number>([['k1', 0]])
-    )
+    U.deepStrictEqual(_.singleton('k1', 0), new Map<string, number>([['k1', 0]]))
   })
 
   it('getEq', () => {
@@ -1051,12 +1046,7 @@ describe('Map', () => {
     const m1 = new Map<User, string>([])
     U.deepStrictEqual(_.updateAt(eqUser)({ id: 'a' }, 'a')(m1), O.none)
     const m2 = new Map<User, string>([[{ id: 'a' }, 'b']])
-    U.deepStrictEqual(
-      _.updateAt(eqUser)({ id: 'a' }, 'a')(m2),
-      O.some(
-        new Map<User, string>([[{ id: 'a' }, 'a']])
-      )
-    )
+    U.deepStrictEqual(_.updateAt(eqUser)({ id: 'a' }, 'a')(m2), O.some(new Map<User, string>([[{ id: 'a' }, 'a']])))
   })
 
   it('modifyAt', () => {
@@ -1065,9 +1055,7 @@ describe('Map', () => {
     const m2 = new Map<User, number>([[{ id: 'a' }, 1]])
     U.deepStrictEqual(
       _.modifyAt(eqUser)({ id: 'a' }, (n: number) => n * 2)(m2),
-      O.some(
-        new Map<User, number>([[{ id: 'a' }, 2]])
-      )
+      O.some(new Map<User, number>([[{ id: 'a' }, 2]]))
     )
     // should not return the same reference if nothing changed
     const input: Map<string, number> = new Map([['a', 1]])

@@ -21,7 +21,7 @@
  *
  * @since 2.0.0
  */
-import { getSemiring } from './function'
+import { getSemiring } from './function.ts'
 
 // -------------------------------------------------------------------------------------
 // model

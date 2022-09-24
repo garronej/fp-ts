@@ -27,10 +27,10 @@
  *
  * @since 2.0.0
  */
-import { Category, Category2, Category3, Category4 } from './Category'
-import { identity } from './function'
-import { HKT2, Kind2, Kind3, URIS2, URIS3, URIS4, Kind4 } from './HKT'
-import { Profunctor, Profunctor2, Profunctor3, Profunctor4 } from './Profunctor'
+import { Category, Category2, Category3, Category4 } from './Category.ts'
+import { identity } from './function.ts'
+import { HKT2, Kind2, Kind3, URIS2, URIS3, URIS4, Kind4 } from './HKT.ts'
+import { Profunctor, Profunctor2, Profunctor3, Profunctor4 } from './Profunctor.ts'
 
 // -------------------------------------------------------------------------------------
 // model

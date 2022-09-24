@@ -1,15 +1,15 @@
 /**
  * @since 2.4.0
  */
-import { ap as ap_, Apply, Apply1, Apply2, Apply2C, Apply3, Apply3C } from './Apply'
-import { Chain, Chain1, Chain2, Chain2C, Chain3, Chain3C } from './Chain'
-import { flow, Lazy, pipe } from './function'
-import { Functor, Functor1, Functor2, Functor2C, Functor3, Functor3C, map as map_ } from './Functor'
-import { HKT, Kind, Kind2, Kind3, URIS, URIS2, URIS3 } from './HKT'
-import { Monad, Monad1, Monad2, Monad2C, Monad3, Monad3C } from './Monad'
-import { Pointed, Pointed1, Pointed2, Pointed2C, Pointed3, Pointed3C } from './Pointed'
-import { Semigroup } from './Semigroup'
-import * as T from './These'
+import { ap as ap_, Apply, Apply1, Apply2, Apply2C, Apply3, Apply3C } from './Apply.ts'
+import { Chain, Chain1, Chain2, Chain2C, Chain3, Chain3C } from './Chain.ts'
+import { flow, Lazy, pipe } from './function.ts'
+import { Functor, Functor1, Functor2, Functor2C, Functor3, Functor3C, map as map_ } from './Functor.ts'
+import { HKT, Kind, Kind2, Kind3, URIS, URIS2, URIS3 } from './HKT.ts'
+import { Monad, Monad1, Monad2, Monad2C, Monad3, Monad3C } from './Monad.ts'
+import { Pointed, Pointed1, Pointed2, Pointed2C, Pointed3, Pointed3C } from './Pointed.ts'
+import { Semigroup } from './Semigroup.ts'
+import * as T from './These.ts'
 
 import These = T.These
 
@@ -42,10 +42,10 @@ export function left<F>(F: Pointed<F>): <E, A = never>(e: E) => HKT<F, These<E, 
 /**
  * @since 2.10.0
  */
-export function both<F extends URIS3>(F: Pointed3<F>): <E, A, R, FE>(e: E, a: A) => Kind3<F, R, FE, These<E, A>>
-export function both<F extends URIS3, FE>(F: Pointed3C<F, FE>): <E, A, R>(e: E, a: A) => Kind3<F, R, FE, These<E, A>>
-export function both<F extends URIS2>(F: Pointed2<F>): <E, A, FE>(e: E, a: A) => Kind2<F, FE, These<E, A>>
-export function both<F extends URIS2, FE>(F: Pointed2C<F, FE>): <E, A>(e: E, a: A) => Kind2<F, FE, These<E, A>>
+export function both<F extends URIS3>(F: Pointed3<F>): <E, A, S, R>(e: E, a: A) => Kind3<F, S, R, These<E, A>>
+export function both<F extends URIS3, R>(F: Pointed3C<F, R>): <E, A>(e: E, a: A) => Kind3<F, R, R, These<E, A>>
+export function both<F extends URIS2>(F: Pointed2<F>): <E, A, R>(e: E, a: A) => Kind2<F, R, These<E, A>>
+export function both<F extends URIS2, R>(F: Pointed2C<F, R>): <E, A>(e: E, a: A) => Kind2<F, R, These<E, A>>
 export function both<F extends URIS>(F: Pointed1<F>): <E, A>(e: E, a: A) => Kind<F, These<E, A>>
 export function both<F>(F: Pointed<F>): <E, A = never>(e: E, a: A) => HKT<F, These<E, A>>
 export function both<F>(F: Pointed<F>): <E, A = never>(e: E, a: A) => HKT<F, These<E, A>> {
@@ -429,8 +429,6 @@ export function toTuple2<F>(
 // deprecated
 // -------------------------------------------------------------------------------------
 
-// tslint:disable: deprecation
-
 /**
  * @category model
  * @since 2.4.0
@@ -459,9 +457,7 @@ export interface TheseM<M> {
   readonly right: <E, A>(a: A) => TheseT<M, E, A>
   readonly both: <E, A>(e: E, a: A) => TheseT<M, E, A>
   readonly toTuple: <E, A>(fa: TheseT<M, E, A>, e: E, a: A) => HKT<M, [E, A]>
-  readonly getMonad: <E>(
-    S: Semigroup<E>
-  ) => {
+  readonly getMonad: <E>(S: Semigroup<E>) => {
     readonly _E: E
     readonly map: <A, B>(ma: TheseT<M, E, A>, f: (a: A) => B) => TheseT<M, E, B>
     readonly of: <A>(a: A) => TheseT<M, E, A>
@@ -498,9 +494,7 @@ export interface TheseM1<M extends URIS> {
   readonly right: <E, A>(a: A) => TheseT1<M, E, A>
   readonly both: <E, A>(e: E, a: A) => TheseT1<M, E, A>
   readonly toTuple: <E, A>(fa: TheseT1<M, E, A>, e: E, a: A) => Kind<M, [E, A]>
-  readonly getMonad: <E>(
-    S: Semigroup<E>
-  ) => {
+  readonly getMonad: <E>(S: Semigroup<E>) => {
     readonly _E: E
     readonly map: <A, B>(ma: TheseT1<M, E, A>, f: (a: A) => B) => TheseT1<M, E, B>
     readonly of: <A>(a: A) => TheseT1<M, E, A>
@@ -537,9 +531,7 @@ export interface TheseM2<M extends URIS2> {
   readonly right: <R, E, A>(a: A) => TheseT2<M, R, E, A>
   readonly both: <R, E, A>(e: E, a: A) => TheseT2<M, R, E, A>
   readonly toTuple: <R, E, A>(fa: TheseT2<M, R, E, A>, e: E, a: A) => Kind2<M, R, [E, A]>
-  readonly getMonad: <E>(
-    S: Semigroup<E>
-  ) => {
+  readonly getMonad: <E>(S: Semigroup<E>) => {
     readonly _E: E
     readonly map: <R, A, B>(ma: TheseT2<M, R, E, A>, f: (a: A) => B) => TheseT2<M, R, E, B>
     readonly of: <R, A>(a: A) => TheseT2<M, R, E, A>

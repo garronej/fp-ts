@@ -1,6 +1,6 @@
-import * as _ from '../../src/NonEmptyArray'
-import { Ord } from '../../src/Ord'
-import { pipe } from '../../src/function'
+import * as _ from '../../src/NonEmptyArray.ts'
+import { Ord } from '../../src/Ord.ts'
+import { pipe } from '../../src/function.ts'
 
 declare const as: Array<string>
 declare const neas: _.NonEmptyArray<string>
@@ -83,11 +83,11 @@ pipe(
 // Do
 //
 
-// $ExpectType NonEmptyArray<{ readonly a: number; readonly b: string; }>
+// $ExpectType NonEmptyArray<{ readonly a1: number; readonly a2: string; }>
 pipe(
   _.Do,
-  _.bind('a', () => _.of(1)),
-  _.bind('b', () => _.of('b'))
+  _.bind('a1', () => _.of(1)),
+  _.bind('a2', () => _.of('b'))
 )
 
 //

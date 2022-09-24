@@ -1,7 +1,7 @@
-import * as _ from '../../src/Monoid'
-import * as S from '../../src/string'
-import * as N from '../../src/number'
-import * as B from '../../src/boolean'
+import * as _ from '../../src/Monoid.ts'
+import * as S from '../../src/string.ts'
+import * as N from '../../src/number.ts'
+import * as B from '../../src/boolean.ts'
 
 //
 // struct

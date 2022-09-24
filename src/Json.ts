@@ -1,8 +1,8 @@
 /**
  * @since 2.10.0
  */
-import { Either, tryCatch } from './Either'
-import { identity } from './function'
+import { Either, tryCatch } from './Either.ts'
+import { identity } from './function.ts'
 
 /**
  * @since 2.10.0

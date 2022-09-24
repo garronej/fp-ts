@@ -1,8 +1,8 @@
-import * as U from './util'
-import * as B from '../src/boolean'
-import { pipe } from '../src/function'
-import { struct, Monoid } from '../src/Monoid'
-import * as _ from '../src/Traced'
+import * as U from './util.ts'
+import * as B from '../src/boolean.ts'
+import { pipe } from '../src/function.ts'
+import { struct, Monoid } from '../src/Monoid.ts'
+import * as _ from '../src/Traced.ts'
 
 // Adapted from https://chshersh.github.io/posts/2019-03-25-comonadic-builders
 
@@ -29,12 +29,14 @@ interface Project {
 
 interface ProjectBuilder extends _.Traced<Settings, Project> {}
 
-const buildProject = (projectName: string): ProjectBuilder => (settings) => ({
-  projectName,
-  projectHasLibrary: settings.settingsHasLibrary,
-  projectGitHub: settings.settingsGitHub,
-  projectTravis: settings.settingsTravis
-})
+const buildProject =
+  (projectName: string): ProjectBuilder =>
+  (settings) => ({
+    projectName,
+    projectHasLibrary: settings.settingsHasLibrary,
+    projectGitHub: settings.settingsGitHub,
+    projectTravis: settings.settingsTravis
+  })
 
 const hasLibraryB = (wa: ProjectBuilder): Project => {
   const p = { ...M.empty, settingsHasLibrary: true }

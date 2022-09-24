@@ -6,8 +6,8 @@
  *
  * @since 2.0.0
  */
-import { BoundedJoinSemilattice } from './BoundedJoinSemilattice'
-import { BoundedMeetSemilattice } from './BoundedMeetSemilattice'
+import { BoundedJoinSemilattice } from './BoundedJoinSemilattice.ts'
+import { BoundedMeetSemilattice } from './BoundedMeetSemilattice.ts'
 
 // -------------------------------------------------------------------------------------
 // model

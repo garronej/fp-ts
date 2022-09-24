@@ -1,8 +1,8 @@
-import * as _ from '../../src/Map'
-import * as S from '../../src/string'
-import * as N from '../../src/number'
-import { pipe } from '../../src/function'
-import * as E from '../../src/Either'
+import * as _ from '../../src/Map.ts'
+import * as S from '../../src/string.ts'
+import * as N from '../../src/number.ts'
+import { pipe } from '../../src/function.ts'
+import * as E from '../../src/Either.ts'
 
 //
 // member

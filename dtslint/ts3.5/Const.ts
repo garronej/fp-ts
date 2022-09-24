@@ -1,4 +1,4 @@
-import * as _ from '../../src/Const'
+import * as _ from '../../src/Const.ts'
 
 //
 // contramap

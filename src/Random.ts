@@ -1,9 +1,9 @@
 /**
  * @since 2.0.0
  */
-import { IO, map } from './IO'
-import { pipe } from './function'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { IO, map } from './IO.ts'
+import { pipe } from './function.ts'
+import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray.ts'
 
 /**
  * Returns a random number between 0 (inclusive) and 1 (exclusive). This is a direct wrapper around JavaScript's
@@ -45,12 +45,10 @@ export function randomRange(min: number, max: number): IO<number> {
  *
  * @since 2.0.0
  */
-export const randomBool: IO<boolean> =
-  /*#__PURE__*/
-  pipe(
-    random,
-    map((n) => n < 0.5)
-  )
+export const randomBool: IO<boolean> = /*#__PURE__*/ pipe(
+  random,
+  map((n) => n < 0.5)
+)
 
 /**
  * Returns a random element of a `ReadonlyNonEmptyArray`.

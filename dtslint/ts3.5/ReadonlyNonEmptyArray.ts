@@ -1,6 +1,6 @@
-import * as _ from '../../src/ReadonlyNonEmptyArray'
-import { pipe } from '../../src/function'
-import { Ord } from '../../src/Ord'
+import * as _ from '../../src/ReadonlyNonEmptyArray.ts'
+import { pipe } from '../../src/function.ts'
+import { Ord } from '../../src/Ord.ts'
 
 declare const ras: ReadonlyArray<string>
 declare const rneas: _.ReadonlyNonEmptyArray<string>
@@ -83,11 +83,11 @@ pipe(
 // Do
 //
 
-// $ExpectType ReadonlyNonEmptyArray<{ readonly a: number; readonly b: string; }>
+// $ExpectType ReadonlyNonEmptyArray<{ readonly a1: number; readonly a2: string; }>
 pipe(
   _.Do,
-  _.bind('a', () => _.of(1)),
-  _.bind('b', () => _.of('b'))
+  _.bind('a1', () => _.of(1)),
+  _.bind('a2', () => _.of('b'))
 )
 
 //

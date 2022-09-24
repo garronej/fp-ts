@@ -1,8 +1,8 @@
-import * as U from './util'
-import * as _ from '../src/Const'
-import * as N from '../src/number'
-import { pipe } from '../src/function'
-import * as S from '../src/string'
+import * as U from './util.ts'
+import * as _ from '../src/Const.ts'
+import * as N from '../src/number.ts'
+import { pipe } from '../src/function.ts'
+import * as S from '../src/string.ts'
 
 describe('Const', () => {
   describe('pipeables', () => {

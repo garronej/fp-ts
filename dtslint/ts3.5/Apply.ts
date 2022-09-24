@@ -1,9 +1,9 @@
-import * as _ from '../../src/Apply'
-import { URIS, Kind } from '../../src/HKT'
-import * as RTE from '../../src/ReaderTaskEither'
-import * as E from '../../src/Either'
-import { pipe } from '../../src/function'
-import * as Fu from '../../src/Functor'
+import * as _ from '../../src/Apply.ts'
+import { URIS, Kind } from '../../src/HKT.ts'
+import * as RTE from '../../src/ReaderTaskEither.ts'
+import * as E from '../../src/Either.ts'
+import { pipe } from '../../src/function.ts'
+import * as Fu from '../../src/Functor.ts'
 
 //
 // apS

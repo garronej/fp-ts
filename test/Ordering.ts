@@ -1,5 +1,5 @@
-import * as U from './util'
-import * as _ from '../src/Ordering'
+import * as U from './util.ts'
+import * as _ from '../src/Ordering.ts'
 
 describe('Ordering', () => {
   // -------------------------------------------------------------------------------------

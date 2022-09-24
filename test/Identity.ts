@@ -1,10 +1,10 @@
-import * as U from './util'
-import { left, right } from '../src/Either'
-import * as N from '../src/number'
-import { identity, pipe } from '../src/function'
-import * as _ from '../src/Identity'
-import * as O from '../src/Option'
-import * as S from '../src/string'
+import * as U from './util.ts'
+import { left, right } from '../src/Either.ts'
+import * as N from '../src/number.ts'
+import { identity, pipe } from '../src/function.ts'
+import * as _ from '../src/Identity.ts'
+import * as O from '../src/Option.ts'
+import * as S from '../src/string.ts'
 
 describe('Identity', () => {
   describe('pipeables', () => {
@@ -123,9 +123,10 @@ describe('Identity', () => {
       pipe(
         _.of(1),
         _.bindTo('a'),
-        _.bind('b', () => _.of('b'))
+        _.bind('b', () => _.of('b')),
+        _.let('c', ({ a, b }) => [a, b])
       ),
-      { a: 1, b: 'b' }
+      { a: 1, b: 'b', c: [1, 'b'] }
     )
   })
 

@@ -1,6 +1,6 @@
-import * as U from './util'
-import * as N from '../src/number'
-import * as _ from '../src/Ring'
+import * as U from './util.ts'
+import * as N from '../src/number.ts'
+import * as _ from '../src/Ring.ts'
 
 describe('Ring', () => {
   it('tuple', () => {

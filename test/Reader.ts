@@ -1,10 +1,10 @@
-import { pipe } from '../src/function'
-import * as N from '../src/number'
-import * as _ from '../src/Reader'
-import * as RA from '../src/ReadonlyArray'
-import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
-import * as S from '../src/string'
-import * as U from './util'
+import { pipe } from '../src/function.ts'
+import * as N from '../src/number.ts'
+import * as _ from '../src/Reader.ts'
+import * as RA from '../src/ReadonlyArray.ts'
+import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray.ts'
+import * as S from '../src/string.ts'
+import * as U from './util.ts'
 
 interface Env {
   readonly count: number
@@ -24,8 +24,18 @@ describe('Reader', () => {
       U.deepStrictEqual(pipe(_.of('a'), _.apFirst(_.of('b')))({}), 'a')
     })
 
+    it('apFirstW', () => {
+      const fb = _.of<{ readonly k: string }, boolean>(true)
+      U.deepStrictEqual(pipe(_.of<{ readonly x: number }, string>('foo'), _.apFirstW(fb))({ x: 1, k: 'v' }), 'foo')
+    })
+
     it('apSecond', () => {
       U.deepStrictEqual(pipe(_.of('a'), _.apSecond(_.of('b')))({}), 'b')
+    })
+
+    it('apSecondW', () => {
+      const fb = _.of<{ readonly k: string }, boolean>(true)
+      U.deepStrictEqual(pipe(_.of<{ readonly x: number }, string>('foo'), _.apSecondW(fb))({ x: 1, k: 'v' }), true)
     })
 
     it('chain', () => {
@@ -101,13 +111,11 @@ describe('Reader', () => {
   })
 
   it('getSemigroup', () => {
-    // tslint:disable-next-line: deprecation
     const S = _.getSemigroup(N.SemigroupSum)
     U.deepStrictEqual(S.concat(_.of(1), _.of(2))({}), 3)
   })
 
   it('getMonoid', () => {
-    // tslint:disable-next-line: deprecation
     const M = _.getMonoid(N.MonoidSum)
     U.deepStrictEqual(M.concat(_.of(1), M.empty)({}), 1)
     U.deepStrictEqual(M.concat(M.empty, _.of(1))({}), 1)
@@ -129,9 +137,10 @@ describe('Reader', () => {
       pipe(
         _.of(1),
         _.bindTo('a'),
-        _.bind('b', () => _.of('b'))
+        _.bind('b', () => _.of('b')),
+        _.let('c', ({ a, b }) => [a, b])
       )(undefined),
-      { a: 1, b: 'b' }
+      { a: 1, b: 'b', c: [1, 'b'] }
     )
   })
 
@@ -148,9 +157,7 @@ describe('Reader', () => {
       U.deepStrictEqual(pipe(input, f)({}), ['a0', 'b1'])
     })
 
-    // old
     it('sequenceArray', () => {
-      // tslint:disable-next-line: deprecation
       U.deepStrictEqual(pipe([_.of(1), _.of(2)], _.sequenceArray)(undefined), [1, 2])
     })
   })

@@ -6,18 +6,18 @@ import {
   ApplicativeComposition21,
   ApplicativeComposition2C1,
   ApplicativeCompositionHKT1
-} from './Applicative'
-import { ap as ap_, Apply, Apply1, Apply2, Apply2C, Apply3, Apply3C, Apply4 } from './Apply'
-import { Chain, Chain1, Chain2, Chain2C, Chain3, Chain3C, Chain4 } from './Chain'
-import { Either } from './Either'
-import { constant, flow, Lazy, pipe } from './function'
-import { Functor, Functor1, Functor2, Functor2C, Functor3, Functor3C, Functor4, map as map_ } from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { Monad, Monad1, Monad2, Monad2C, Monad3, Monad3C, Monad4 } from './Monad'
-import * as O from './Option'
-import { Pointed, Pointed1, Pointed2, Pointed2C, Pointed3, Pointed3C, Pointed4 } from './Pointed'
-import { Predicate } from './Predicate'
-import { Refinement } from './Refinement'
+} from './Applicative.ts'
+import { ap as ap_, Apply, Apply1, Apply2, Apply2C, Apply3, Apply3C, Apply4 } from './Apply.ts'
+import { Chain, Chain1, Chain2, Chain2C, Chain3, Chain3C, Chain4 } from './Chain.ts'
+import { Either } from './Either.ts'
+import { constant, flow, Lazy, pipe } from './function.ts'
+import { Functor, Functor1, Functor2, Functor2C, Functor3, Functor3C, Functor4, map as map_ } from './Functor.ts'
+import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT.ts'
+import { Monad, Monad1, Monad2, Monad2C, Monad3, Monad3C, Monad4 } from './Monad.ts'
+import * as O from './Option.ts'
+import { Pointed, Pointed1, Pointed2, Pointed2C, Pointed3, Pointed3C, Pointed4 } from './Pointed.ts'
+import { Predicate } from './Predicate.ts'
+import { Refinement } from './Refinement.ts'
 
 import Option = O.Option
 
@@ -283,21 +283,19 @@ export function fromPredicate<F extends URIS>(
   <A>(predicate: Predicate<A>): <B extends A>(b: B) => Kind<F, Option<B>>
   <A>(predicate: Predicate<A>): (a: A) => Kind<F, Option<A>>
 }
-export function fromPredicate<F>(
-  F: Pointed<F>
-): {
+export function fromPredicate<F>(F: Pointed<F>): {
   <A, B extends A>(refinement: Refinement<A, B>): (a: A) => HKT<F, Option<B>>
   <A>(predicate: Predicate<A>): <B extends A>(b: B) => HKT<F, Option<B>>
   <A>(predicate: Predicate<A>): (a: A) => HKT<F, Option<A>>
 }
-export function fromPredicate<F>(
-  F: Pointed<F>
-): {
+export function fromPredicate<F>(F: Pointed<F>): {
   <A, B extends A>(refinement: Refinement<A, B>): (a: A) => HKT<F, Option<B>>
   <A>(predicate: Predicate<A>): <B extends A>(b: B) => HKT<F, Option<B>>
   <A>(predicate: Predicate<A>): (a: A) => HKT<F, Option<A>>
 } {
-  return <A>(predicate: Predicate<A>) => (a: A) => F.of(O.fromPredicate(predicate)(a))
+  return <A>(predicate: Predicate<A>) =>
+    (a: A) =>
+      F.of(O.fromPredicate(predicate)(a))
 }
 
 /**
@@ -563,8 +561,6 @@ export function alt<M>(
 // -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
-
-// tslint:disable: deprecation
 
 /**
  * @category model

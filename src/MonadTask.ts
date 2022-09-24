@@ -3,9 +3,9 @@
  *
  * @since 2.0.0
  */
-import { FromTask, FromTask1, FromTask2, FromTask2C, FromTask3, FromTask3C, FromTask4 } from './FromTask'
-import { URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { MonadIO, MonadIO1, MonadIO2, MonadIO2C, MonadIO3, MonadIO3C, MonadIO4 } from './MonadIO'
+import { FromTask, FromTask1, FromTask2, FromTask2C, FromTask3, FromTask3C, FromTask4 } from './FromTask.ts'
+import { URIS, URIS2, URIS3, URIS4 } from './HKT.ts'
+import { MonadIO, MonadIO1, MonadIO2, MonadIO2C, MonadIO3, MonadIO3C, MonadIO4 } from './MonadIO.ts'
 
 // -------------------------------------------------------------------------------------
 // model
